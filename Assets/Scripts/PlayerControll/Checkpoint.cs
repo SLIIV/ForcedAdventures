@@ -51,7 +51,6 @@ public class Checkpoint : MonoBehaviour
                 {
                 playerAudio.Stop();
                 playerAudio.clip = sounds[3];
-                playerAudio.Play();
                 maxWorkCount--;
                 if (health > 0)
                 {
@@ -65,8 +64,9 @@ public class Checkpoint : MonoBehaviour
                     check.SetActive(true); // returns checkpoints on their positions
                 }
                 transform.position = checkPoint;
+                playerAudio.Play();
 
-                }
+            }
             }
         
     }

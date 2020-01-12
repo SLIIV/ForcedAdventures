@@ -15,6 +15,7 @@ TagManager:
   - ThirdTriggerCube
   - SecondTriggerCube
   - FirstTriggerCube
+  - Teleportator
   layers:
   - Default
   - TransparentFX
