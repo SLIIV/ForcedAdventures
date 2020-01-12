@@ -8,8 +8,16 @@ public class ObjectsSpawnPoint : MonoBehaviour
     private AudioSource source;
     void Awake()
     {
-        source = GameObject.Find("Teleportator").GetComponent<AudioSource>();
+        try
+        {
+            source = GameObject.Find("Teleportator").GetComponent<AudioSource>();
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Внимание: источник звука не найден");
+        }
         startPos = transform.position;
+
     }
     void OnTriggerEnter(Collider prop)
     {
