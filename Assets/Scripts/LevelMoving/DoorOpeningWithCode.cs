@@ -8,12 +8,20 @@ public class DoorOpeningWithCode : MonoBehaviour
     public bool isSecondNumber = false;
     public bool isThirdNumber = false;
     public bool isFourthNumber = false;
+    public AudioSource playerAudio;
+    public AudioClip[] clips;
+    bool isOpened = false;
 
     // Update is called once per frame
     void OnTriggerStay(Collider prop)
     {
         if (prop.CompareTag("Player"))
         {
+            if(Input.anyKeyDown)
+            {
+                playerAudio.clip = clips[0];
+                playerAudio.Play();
+            }
             if (Input.GetKey(KeyCode.Alpha7))
                 isFirstNumber = true;
             if (Input.GetKey(KeyCode.Alpha3) && isFirstNumber == true)
@@ -22,9 +30,12 @@ public class DoorOpeningWithCode : MonoBehaviour
                 isThirdNumber = true;
             if (Input.GetKey(KeyCode.Alpha5) && isThirdNumber == true)
                 isFourthNumber = true;
-            if (isFirstNumber && isSecondNumber && isThirdNumber && isFourthNumber)
+            if (isFirstNumber && isSecondNumber && isThirdNumber && isFourthNumber && !isOpened)
             {
                 StartCoroutine(Rotator().GetEnumerator());
+                playerAudio.clip = clips[1];
+                playerAudio.Play();
+                
             }
         }    
     }
@@ -36,6 +47,6 @@ public class DoorOpeningWithCode : MonoBehaviour
             gameObject.transform.rotation *= direction;
             yield return null;
         }
-        isFirstNumber = false;
+        isOpened = true;
     }
 }
