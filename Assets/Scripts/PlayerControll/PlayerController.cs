@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
         }
             
         if (Input.GetKey(KeyCode.W)) // forward movement relative to the camera
-            rb.AddForce(new Vector3(Camera.forward.x * speed, Camera.forward.y * speed, Camera.forward.z * speed) * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(Camera.forward.x * speed, 0, Camera.forward.z * speed) * Time.fixedDeltaTime);
         if (Input.GetKey(KeyCode.S)) // back movement relative to the camera
-            rb.AddForce(new Vector3(Camera.forward.x * -speed, Camera.forward.y * -speed, Camera.forward.z * -speed) * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(Camera.forward.x * -speed, 0, Camera.forward.z * -speed) * Time.fixedDeltaTime);
         if (Input.GetKey(KeyCode.A)) // left movement relative to the camera
-            rb.AddForce(new Vector3(Camera.right.x * -speed, Camera.right.y * -speed, Camera.right.z * -speed) * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(Camera.right.x * -speed, 0, Camera.right.z * -speed) * Time.fixedDeltaTime);
         if (Input.GetKey(KeyCode.D)) // right movement relative to the camera
-            rb.AddForce(new Vector3(Camera.right.x * speed, Camera.right.y * speed, Camera.right.z * speed) * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(Camera.right.x * speed, 0, Camera.right.z * speed) * Time.fixedDeltaTime);
         jump();
     }
     void jump()
